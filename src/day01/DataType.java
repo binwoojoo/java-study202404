@@ -30,5 +30,16 @@ public class DataType {
         int x = 200;
         System.out.println(x + a);
         System.out.println(b * x);
+
+        // 문자형 char: 2byte 0~65536
+        char text = '응';  // 한글자만 저장
+        System.out.println("text = " + text);
+
+        // 문자열: 문자 배열 용량이 정해지있지 않음(기본 타입아님)
+        char[] hello = {'안', '녕', '하', '세', '요'};
+        System.out.println("hello = " + new String(hello));
+
+        String hello2 = "안녕하시소";
+
     }
 }
