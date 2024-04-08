@@ -10,9 +10,11 @@ public class ArrayQuiz02 {
         System.out.println("-삭제할 학생의 별명을 입력하세요!");
         String[] name = {"영웅재중", "믹키유천", "최강창민", "유노윤호", "시아준수"};
         String[] temp = new String[name.length - 1];
+        boolean cheker = false;
 
         while (true) {
             String userInputName = scanner.nextLine();
+
             for (int i = 0; i < name.length; i++) {
                 if (userInputName.equals(name[i])) {
                     String deleteName = name[i];
@@ -26,11 +28,14 @@ public class ArrayQuiz02 {
                     temp = null;
                     System.out.printf("삭제된 별명은 %s입니다\n", deleteName);
                     System.out.printf("* 삭제 후 정보: " + Arrays.toString(name) + "\n");
-
+                    cheker = true;
+                    break;
                 }
-//               stem.out.printf("해당 별명(%s)는 존재하지 않습니다\n", userInputName);
-
             }
+            if (!cheker) {
+                System.out.printf("해당 별명(%s)는 존재하지 않습니다\n", userInputName);
+            }
+            cheker = false;
         }
     }
 
