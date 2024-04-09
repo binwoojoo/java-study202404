@@ -8,6 +8,7 @@ public class ArrayQuiz02 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("우리반 학생들의 별명:[영웅재중,믹키유천,최강창민,유노윤호,시아준수]");
         System.out.println("-삭제할 학생의 별명을 입력하세요!");
+        System.out.print(">> ");
         String[] name = {"영웅재중", "믹키유천", "최강창민", "유노윤호", "시아준수"};
         String[] temp = new String[name.length - 1];
         boolean cheker = false;
