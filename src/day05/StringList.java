@@ -120,11 +120,17 @@ public class StringList {
 
     // 배열 데이터가 한개라도 있는지 확인
     public boolean isEmpty() {
-        if (sArr.length > 0) {
-            return false;
-        } else {
-            return true;
-        }
+//        if (sArr.length > 0) {
+//            return false;
+//        } else {
+//            return true;
+//        }
+        // 배열에 데이터가 하나도 없는지 확인
+
+        return sArr.length == 0;
+
     }
+
+
 }
 
