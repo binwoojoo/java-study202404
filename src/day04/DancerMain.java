@@ -31,12 +31,12 @@ public class DancerMain {
         Dancer hong = new Dancer();
         hong.dance();
 
-        Dancer choi = new Dancer("나미꼬");
+        Dancer choi = new Dancer("최미꼬");
 
         choi.dance();
         choi.introduce();
 
-        Dancer park = new Dancer("털바퀴", "캣맘즈");
+        Dancer park = new Dancer("박털바퀴", "캣맘즈");
 
         park.dance();
         park.introduce();

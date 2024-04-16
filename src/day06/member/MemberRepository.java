@@ -103,7 +103,14 @@ public class MemberRepository {
 //            temp[i] = members[i];
 //        }
 //        members = temp;
+        Member removedItem = members.remove(index);
+        restoreList.push(removedItem);
+    }
 
-        members.remove(index);
+    public Member findRestoreMember(String inputEmail) {
+//        System.out.println(restoreList);
+        return restoreList.get(inputEmail);
     }
 }
+
+

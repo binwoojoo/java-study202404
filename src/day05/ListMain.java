@@ -15,6 +15,7 @@ public class ListMain {
         // 자료 삭제
         foods.remove(0); // 인덱스 번호로 지우기
         foods.remove("치킨"); // 값으로 지우기
+
         // 자료 중간 삽입
         userNames.push("신짱구");
         userNames.push("신형만");
@@ -43,5 +44,6 @@ public class ListMain {
         // 배열 내부 데이터 수 확인
         System.out.println("foods = " + foods.size());
         System.out.println("flag = " + flag);
+
     }
 }
