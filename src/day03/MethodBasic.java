@@ -47,6 +47,7 @@ public class MethodBasic {
 
         int[] operateResult = operate(20,10);
         System.out.println(operateResult[1]);
+
     }// end main method
 
     // 자바의 함수는 반드시 클래스 블록 내부, 다른 메서드 외부에 만들어야 함
