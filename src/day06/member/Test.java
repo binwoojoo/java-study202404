@@ -15,7 +15,21 @@ public class Test {
         System.out.println("m1 = " + m1.toString());
         System.out.println("m2 = " + m2.toString());
 
-        Member[] members = {m1,m2};  // 배열안에 객체 ㅋㅋ
+        Member[] members = {m1, m2};  // 배열안에 객체 ㅋㅋ
 
+        for (Member m : members) {
+            System.out.println(m.memberName);
+        }
+
+        System.out.println("================================================");
+
+        MemberRepository mr = new MemberRepository();
+        MemberView mv = new MemberView();
+
+        Member newMember = new Member("aaa@bbb.com", "9999", "유인촌", "고양이", 49);
+
+        mr.addNewMember(newMember);
+
+        mv.showMembers();
     }
 }
