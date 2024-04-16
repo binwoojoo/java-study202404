@@ -56,7 +56,7 @@ public class MemberRepository {
      * @since 2024.04.16
      */
     boolean isDuplicateEmail(String targetEmail) {
-        return findMemberByEmail(targetEmail) != null;
+        return members.findIndex(targetEmail) != -1;
     }
 
     /**

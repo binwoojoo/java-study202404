@@ -52,7 +52,8 @@ public class MemberView {
         System.out.println("* 3. 전체회원 정보 조회하기");
         System.out.println("* 4. 회원 정보 수정하기");
         System.out.println("* 5. 회원 탈퇴하기");
-        System.out.println("* 6. 프로그램 종료");
+        System.out.println("* 6. 회원 복구하기");
+        System.out.println("* 7. 프로그램 종료");
         System.out.println("=============================");
 
         String menuNumber = si.input("- 메뉴 번호: ");
@@ -127,6 +128,7 @@ public class MemberView {
             String inputPw = si.input("# 비밀번호를 입력: ");
             if (inputPw.equals(foundMember.password)) {
                 mr.removeMember(inputEmail);
+                mr.addNewMember(foundMember);
                 System.out.printf("# %s님의 회원정보가 삭제되었습니다.\n", foundMember.memberName);
             } else {
                 System.out.println("\n# 비밀번호가 일치하지 않습니다. 탈퇴를 취소합니다.");
@@ -135,5 +137,15 @@ public class MemberView {
             System.out.println("\n# 해당 회원은 존재하지 않습니다.");
         }
 
+    }
+
+    public void restoreMember() {
+        String restoreMember = si.input("# 복구하실 회원의 이메일을 입력하세요ㅋㅋ\n");
+        Member foundMember = mr.findMemberByEmail(restoreMember);
+        String restorePassword = si.input("비밀번호를 입력하세요\n");
+        if(foundMember.password.equals(restorePassword)){
+            mr.addNewMember(foundMember);
+            System.out.println("복구 성공이요ㅋㅋ");
+        }
     }
 }
