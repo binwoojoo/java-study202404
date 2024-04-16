@@ -1,9 +1,8 @@
 package util;
 
-// 역할: 스캐너 입력을 간소화해주는 객체
-
 import java.util.Scanner;
 
+// 역할: 스캐너 입력을 간소화해주는 객체
 public class SimpleInput {
 
     Scanner sc = new Scanner(System.in);
@@ -14,11 +13,9 @@ public class SimpleInput {
         return sc.nextLine();
     }
 
-    // 엔타를 누르기 전까지 멈춰 있는 기능
+    // 엔터를 누르기 전까지 멈춰 있는 기능
     public void stopInput() {
-        System.out.println("==========엔터를 누르면 계속==========");
+        System.out.println("\n========= 엔터를 누르면 계속 ... ========");
         sc.nextLine();
     }
 }
-
-
