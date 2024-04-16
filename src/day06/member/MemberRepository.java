@@ -104,6 +104,20 @@ public class MemberRepository {
 //        }
 //        members = temp;
 
-        members.remove(index);
+        // members 배열에서 삭제 후 삭제된 member를 리턴받음
+        Member removedItem = members.remove(index);
+        restoreList.push(removedItem);
+    }
+
+    public Member findRestoreMember(String inputEmail) {
+        return restoreList.get(inputEmail);
+    }
+
+    public void restore(String restoreMember) {
+        int index = restoreList.findIndex(restoreMember);
+        Member removedItem = restoreList.remove(index);
+        members.push(removedItem);
     }
 }
+
+

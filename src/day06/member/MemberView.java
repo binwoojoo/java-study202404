@@ -128,7 +128,6 @@ public class MemberView {
             String inputPw = si.input("# 비밀번호를 입력: ");
             if (inputPw.equals(foundMember.password)) {
                 mr.removeMember(inputEmail);
-                mr.addNewMember(foundMember);
                 System.out.printf("# %s님의 회원정보가 삭제되었습니다.\n", foundMember.memberName);
             } else {
                 System.out.println("\n# 비밀번호가 일치하지 않습니다. 탈퇴를 취소합니다.");
@@ -139,13 +138,20 @@ public class MemberView {
 
     }
 
+    // 회원 복구에 관련한 입출력 처리
     public void restoreMember() {
         String restoreMember = si.input("# 복구하실 회원의 이메일을 입력하세요ㅋㅋ\n");
-        Member foundMember = mr.findMemberByEmail(restoreMember);
-        String restorePassword = si.input("비밀번호를 입력하세요\n");
-        if(foundMember.password.equals(restorePassword)){
-            mr.addNewMember(foundMember);
-            System.out.println("복구 성공이요ㅋㅋ");
+        Member foundMember = mr.findRestoreMember(restoreMember);
+        if (foundMember != null) {
+            String restorePassword = si.input("비밀번호를 입력하세요\n");
+            if (foundMember.password.equals(restorePassword)) {
+                mr.restore(restoreMember);
+                System.out.println("복구 성공이요ㅋㅋ");
+            } else {
+                System.out.println("\n# 비밀번호가 일치하지 않습니다. 복구를 취소합니다.");
+            }
+        } else {
+            System.out.println("\n# 해당 회원은 복구 대상이 아닙니다.");
         }
     }
 }
