@@ -37,4 +37,9 @@ public class Member {
 
     }
 
+    // 회원의 비밀번호를 수정하는 메서드
+    void changePassword(String newPassword) {
+        this.password = newPassword;
+    }
+
 }

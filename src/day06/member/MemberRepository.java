@@ -2,6 +2,8 @@ package day06.member;
 
 // 역할: 회원 배열을 관리하는 역할 - 회원 데이터 저장소
 
+import java.util.Arrays;
+
 public class MemberRepository {
 
     // 필드
@@ -51,5 +53,45 @@ public class MemberRepository {
         }
         return false;
     }
+    // 이메일을 이용해 해당 회원정보 찾기
+    public Member findMemberByEmail(String targetEmail) {
+        for (Member m : members) {
+            if (targetEmail.equals(m.email)) {
+                return m;
+            }
+        }
+        return null;
+    }
+    // 해당 인덱스 찾기 ㅋㅋㅋ
+    int findIndex(String email) {
+        for (int i = 0; i < members.length; i++) {
+            if (email.equals(members[i].email)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // 배열에서 회원정보 삭제
+    public void removeMemberInfo(String targetEmail) {
+
+
+        int targetIndex = findIndex(targetEmail);
+
+        if (targetIndex == -1) return;
+
+        for (int i = targetIndex; i < members.length - 1; i++) {
+            members[i] = members[i + 1];
+        }
+
+        Member[] temp = new Member[members.length - 1];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = members[i];
+        }
+        members = temp;
+        temp = null;
+
+    }
 }
+
 
