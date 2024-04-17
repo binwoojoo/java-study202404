@@ -19,5 +19,7 @@ public class Mage extends Player {
 
     public void thunderBolt(Mage... target) {
         System.out.println("thunderBolt 스킬을 사용합니다.");
+        System.out.println(target[0].nickname+"은 개쳐맞았습니다.");
+        System.out.println(target[1].nickname+"은 피했습니다.");
     }
 }

@@ -2,7 +2,7 @@ package day07.player;
 
 // 상위 클래스(super class)
 //: 공통 속성(field)과 기능(method)을 가진 부모 클래스
-public class Player extends Object {
+public class Player {
 
     String nickname;
     int level;

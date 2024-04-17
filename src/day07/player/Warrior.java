@@ -15,6 +15,7 @@ public class Warrior extends Player {
 
     public void Dash(Warrior target) {
         System.out.println("Dash 스킬을 사용합니다.");
+        System.out.println(target.nickname+"은 개쳐맞았습니다.");
     }
 
     // 오버라이딩: 부모가 물려준 메서드를 고쳐 쓰는 것

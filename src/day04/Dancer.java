@@ -2,6 +2,7 @@ package day04;
 
 // class: 객체를 찍어내는 설계도
 // 라이브러리 클래스: 설계도의 역할만 함, 실행은 안함 - main이 없음
+
 public class Dancer {
 
     // 클래스에서는 객체의 속성과 기능을 정의
