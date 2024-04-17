@@ -16,7 +16,7 @@ public class Main {
         System.out.println("현재속도: " + myCar.getSpeed() + "km/h");
 
         // 변속 모드
-        myCar.setMode('P');
+        myCar.setMode('D');
 
         System.out.println(myCar.getMode());
 
