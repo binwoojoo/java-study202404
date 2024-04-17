@@ -8,23 +8,41 @@ public class Student {
 
 
     public void setName(String inputName) {
-
+        if (inputName.equals("") || inputName == null) {
+            System.out.println("유효하지않은 입력입니다.");
+            return;
+        }
+        this.name = inputName;
     }
 
-    public void setStudentId(String s001) {
+    public void setStudentId(String studentId) {
+        if (studentId.equals("") || studentId == null) {
+            System.out.println("유효하지않은 입력입니다.");
+            return;
+        }
+        this.studentId = studentId;
     }
 
-    public void setDepartment(String computerScience) {
+    public void setDepartment(String major) {
+        if (major.equals("") || major == null) {
+            System.out.println("유효하지않은 입력입니다.");
+            return;
+        }
+        this.major = major;
     }
 
-//    public String getName() {
-//    }
-//
-//    public String getStudentId() {
-//    }
-//
-//    public String getDepartment() {
-//    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getStudentId() {
+        return this.studentId;
+    }
+
+    public String getDepartment() {
+        return this.major;
+    }
 
 }
 

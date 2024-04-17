@@ -15,37 +15,36 @@ public class Main {
         PasswordManager pm = new PasswordManager("oldPassword123");
         boolean isChanged = pm.changePassword("oldPassword123", "newPassword123");
         System.out.println("Password changed: " + isChanged); // true
-        System.out.println("pm = " + pm.getPassword());
+        System.out.println("pw = " + pm.getPassword());
 
         // Student 클래스 테스트
         Student student = new Student();
         student.setName("박영희");
         student.setStudentId("S001");
         student.setDepartment("Computer Science");
-//        System.out.println("학생 이름: " + student.getName());
-//        System.out.println("학번: " + student.getStudentId());
-//        System.out.println("전공: " + student.getDepartment());
+        System.out.println("학생 이름: " + student.getName());
+        System.out.println("학번: " + student.getStudentId());
+        System.out.println("전공: " + student.getDepartment());
 
         // Car 클래스 테스트
         Car myCar = new Car();
         myCar.setBrand("현대");
         myCar.setModel("그랜져");
         myCar.setYear(2020);
-//        System.out.println("Car Brand: " + myCar.getBrand());
-//        System.out.println("Car Model: " + myCar.getModel());
-//        System.out.println("Car Year: " + myCar.getYear());
-//
-        // Product 클래스 테스트
+        System.out.println("Car Brand: " + myCar.getBrand());
+        System.out.println("Car Model: " + myCar.getModel());
+        System.out.println("Car Year: " + myCar.getYear());
+
+//         Product 클래스 테스트
         Product product = new Product();
         product.setName("Laptop");
         product.setPrice(1200000);
         product.setStock(30);
-//        System.out.println("상품명: " + product.getName());
-//        System.out.println("상품 가격: " + product.getPrice());
-//        System.out.println("재고 수량: " + product.getStock());
-//        product.reduceStock(5);
-//        System.out.println("판매 후 수량: " + product.getStock());
-
+        System.out.println("상품명: " + product.getName());
+        System.out.println("상품 가격: " + product.getPrice());
+        System.out.println("재고 수량: " + product.getStock());
+        product.reduceStock(40);
+        System.out.println("판매 후 수량: " + product.getStock());
 
     }
 }

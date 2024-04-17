@@ -11,6 +11,11 @@ public class Hunter extends Player {
         this.concentration = 10;
     }
 
+    public void showStatus() {
+        super.showStatus();
+        System.out.println("# concentration: " + this.concentration);
+    }
+
     public void multipleArrow(Hunter... target) {
         System.out.println("multipleArrow 스킬을 사용합니다.");
     }

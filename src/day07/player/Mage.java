@@ -1,6 +1,6 @@
 package day07.player;
 
-public class Mage extends Player{
+public class Mage extends Player {
 
 
     int mana;
@@ -10,6 +10,11 @@ public class Mage extends Player{
         this.level = 1;
         this.hp = 50;
         this.mana = 100;
+    }
+
+    public void showStatus() {
+        super.showStatus();
+        System.out.println("# mana: " + this.mana);
     }
 
     public void thunderBolt(Mage... target) {
