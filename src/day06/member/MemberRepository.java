@@ -1,12 +1,19 @@
 package day06.member;
 
+import java.util.Arrays;
+
 // 역할: 회원 배열을 관리하는 역할 - 회원 데이터 저장소
 public class MemberRepository {
 
     // 필드
+    // const members = [{}, {}, {}];
 //    static Member[] members; // 현재 관리되는 회원 배열
 //    static Member[] restoreList; // 삭제된 회원들이 모일 배열
 
+    // const members = {
+    //    mArr: [{}, {}, {}],
+    //    push: function() {}
+    // };
     MemberList members;
     MemberList restoreList;
 
@@ -30,7 +37,6 @@ public class MemberRepository {
 
     /**
      * 생성된 회원정보를 회원 배열에 끝에 추가하는 기능
-     *
      * @param newMember - 사용자의 입력으로 전달된 회원 정보 객체
      */
     void addNewMember(Member newMember) {
@@ -48,10 +54,9 @@ public class MemberRepository {
 
     /**
      * 이메일 중복을 확인하는 기능
-     *
      * @param targetEmail - 검사할 사용자의 입력 이메일 값
      * @return - 이메일이 이미 존재한다면 true,
-     * 존재하지 않는 사용가능한 이메일이면 false
+     *           존재하지 않는 사용가능한 이메일이면 false
      * @author - 코딩킹
      * @since 2024.04.16
      */
@@ -61,10 +66,9 @@ public class MemberRepository {
 
     /**
      * 이메일을 통해 회원의 모든 정보(객체)를 가져오는 메서드
-     *
      * @param inputEmail - 사용자가 입력한 이메일값
      * @return - 해당 이메일을 통해 찾아낸 회원 객체,
-     * 만약 찾지 못하면 null을 리턴
+     *           만약 찾지 못하면 null을 리턴
      */
     public Member findMemberByEmail(String inputEmail) {
 //        for (Member m : members) {
@@ -103,24 +107,23 @@ public class MemberRepository {
 //            temp[i] = members[i];
 //        }
 //        members = temp;
-        Member removedItem = members.remove(index);
-        restoreList.push(removedItem);
+
+        // members배열에서 삭제 후 삭제된 member를 리턴받음
+        Member removed = members.remove(index);
+        restoreList.push(removed);
+//
+//        System.out.println(Arrays.toString(members.mArr));
+//        System.out.println(Arrays.toString(restoreList.mArr));
     }
 
-        // members 배열에서 삭제 후 삭제된 member를 리턴받음
-        Member removedItem = members.remove(index);
-        restoreList.push(removedItem);
-    }
-
-    public Member findRestoreMember(String inputEmail) {
+    public Member findRestoreMemberByEmail(String inputEmail) {
         return restoreList.get(inputEmail);
     }
 
-    public void restore(String restoreMember) {
-        int index = restoreList.findIndex(restoreMember);
-        Member removedItem = restoreList.remove(index);
-        members.push(removedItem);
+    public void restore(String inputEmail) {
+
+        int index = restoreList.findIndex(inputEmail);
+        Member removed = restoreList.remove(index);
+        members.push(removed);
     }
 }
-
-

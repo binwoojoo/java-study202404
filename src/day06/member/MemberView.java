@@ -66,7 +66,8 @@ public class MemberView {
         if (exit.equals("y")) {
             System.out.println("프로그램을 종료합니다!");
             return true;
-        } else {
+        }
+        else {
             System.out.println("프로그램 종료를 취소합니다.");
             return false;
         }
@@ -140,18 +141,25 @@ public class MemberView {
 
     // 회원 복구에 관련한 입출력 처리
     public void restoreMember() {
-        String restoreMember = si.input("# 복구하실 회원의 이메일을 입력하세요ㅋㅋ\n");
-        Member foundMember = mr.findRestoreMember(restoreMember);
+
+
+        String inputEmail = si.input("# 복구하실 회원의 이메일을 입력하세요.\n>> ");
+
+        // 이메일이 일치하는 회원이 복구리스트에 있는지 조회
+        Member foundMember = mr.findRestoreMemberByEmail(inputEmail);
+
         if (foundMember != null) {
-            String restorePassword = si.input("비밀번호를 입력하세요\n");
-            if (foundMember.password.equals(restorePassword)) {
-                mr.restore(restoreMember);
-                System.out.println("복구 성공이요ㅋㅋ");
+            // 패스워드 검사
+            String inputPw = si.input("# 비밀번호를 입력: ");
+            if (inputPw.equals(foundMember.password)) {
+                mr.restore(inputEmail);
+                System.out.printf("# %s님의 회원정보가 복구되었습니다.\n", foundMember.memberName);
             } else {
                 System.out.println("\n# 비밀번호가 일치하지 않습니다. 복구를 취소합니다.");
             }
         } else {
-            System.out.println("\n# 해당 회원은 복구 대상이 아닙니다.");
+            System.out.println("\n# 해당 회원은 복구대상이 아닙니다.");
         }
+
     }
 }
