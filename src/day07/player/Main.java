@@ -22,6 +22,8 @@ public class Main {
         w.Dash(bitch2);
         m.thunderBolt(z);
 
+        HighMage d = new HighMage();
 
+        d.showStatus();
     }
 }

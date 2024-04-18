@@ -3,14 +3,22 @@ package day08.final_;
 public class Student {
 
     String name;
-    private final String ssn;
-    static final String nation = "대한민국";
-//    public static final String // 상수
+    final String ssn; // 주민번호
+    static final String nation = "대한민국"; // 국적
 
     Student(final String ssn) {
+//        ssn = "dfjkdsfjds";
+        final int a = 10;
+//        a = 20;
         this.ssn = ssn;
-
         double pi = Math.PI;
     }
 
+    public String getSsn() {
+        return ssn;
+    }
+
+//        public void setSsn(String ssn) {
+//        this.ssn = ssn;
+//    }
 }

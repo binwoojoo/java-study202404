@@ -5,7 +5,6 @@ class Child extends Parent {
     void sing() {
         System.out.println("비비크림 빠빠빠");
     }
-
 //    @Override
 //    void dance() {
 //        System.out.println("춤을 핑팡퐁");
