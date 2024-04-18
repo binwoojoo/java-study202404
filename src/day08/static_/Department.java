@@ -9,12 +9,11 @@ public class Department {
     public Department(String departmentName, int studentCount) {
         this.departmentName = departmentName;
         this.studentCount = studentCount;
-        Department.totalStudents = studentCount;
     }
 
     public void addStudent(int number) {
-      int i = this.studentCount += number;
-      Department.totalStudents += i;
+      this.studentCount += number;
+      Department.totalStudents += studentCount;
     }
 
     public int getStudentCount() {

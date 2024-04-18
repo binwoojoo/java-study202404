@@ -8,6 +8,7 @@ public class departmentMain {
 
         compSci.addStudent(30);
         biology.addStudent(20);
+        chemistry.addStudent(100);
 
         System.out.println("컴퓨터 과학과 학생 수: " + compSci.getStudentCount());
         System.out.println("생물학과 학생 수: " + biology.getStudentCount());

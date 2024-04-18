@@ -1,8 +1,8 @@
 package day08.static_;
 
 public class Product {
-    String name;
-    int price;
+    private String name;
+    private int price;
 
     public Product(String name, int price) {
         this.name = name;
@@ -10,7 +10,6 @@ public class Product {
     }
 
     public void sellProduct() {
-        Store.addSale(price);
-//        Store.totalSales += this.price;
+        Store.addSale(this.price);
     }
 }

@@ -2,7 +2,7 @@ package day08.static_;
 
 public class Store {
 
-    static int totalSales;
+    private static int totalSales;
 
     static void addSale(int price) {
         totalSales += price;

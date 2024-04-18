@@ -34,7 +34,12 @@ public class MemberView {
 
         String name = si.input("- 이름: ");
         String password = si.input("- 패스워드: ");
-        String gender = si.input("- 성별: ");
+        String gender = si.input("- 성별(M/F): ");
+        if (gender.equals("M")) {
+            gender = MemberConstants.Male;
+        } else if (gender.equals("F")) {
+            gender = MemberConstants.Female;
+        }
         int age = Integer.parseInt(si.input("- 나이: "));
 
         // 입력데이터를 기반으로 한 명의 회원 객체를 생성
@@ -66,8 +71,7 @@ public class MemberView {
         if (exit.equals("y")) {
             System.out.println("프로그램을 종료합니다!");
             return true;
-        }
-        else {
+        } else {
             System.out.println("프로그램 종료를 취소합니다.");
             return false;
         }
