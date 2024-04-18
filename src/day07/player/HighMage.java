@@ -1,9 +1,9 @@
 package day07.player;
 
-public class HighMage {
+public class HighMage extends Mage{
 
     HighMage() {
-        super();
+        super("나미꼬");
     }
 
 }

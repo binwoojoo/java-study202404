@@ -33,8 +33,10 @@ public class Main {
         Calculator redCal = new Calculator();
         Calculator blueCal = new Calculator();
 
-        redCal.calcArea(5);
-        blueCal.calcArea(5);
+
+        double v = Calculator.calcArea(6);
+        out.println("v = " + v);
+//        blueCal.calcArea(5);
 
         redCal.paint("red");
         blueCal.paint("blue");
@@ -43,7 +45,7 @@ public class Main {
 
         Double d = random();
 
-        out.println();
+        out.println(d);
 
         m1();
         out.println("========================================");
@@ -54,7 +56,7 @@ public class Main {
 
         out.println(choi.name);
         out.println(choi.age);
-        out.println(choi.nation);
+//        out.println(choi.nation);
 
 
     }
