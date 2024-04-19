@@ -1,5 +1,7 @@
 package day07.player;
 
+import java.util.Arrays;
+
 public class Mage extends Player {
 
 
@@ -15,9 +17,19 @@ public class Mage extends Player {
         System.out.println("# mana: " + this.mana);
     }
 
-    public void thunderBolt(Mage... target) {
+    public void thunderBolt(Player... target) {
         System.out.println("thunderBolt 스킬을 사용합니다.");
-        System.out.println(target[0].nickname+"은 개쳐맞았습니다.");
-        System.out.println(target[1].nickname+"은 피했습니다.");
+
+        for (Player player : target) {
+            // 내가 맞으면
+            if (player == this) {
+                continue;
+            }
+            // 10~15의 랜덤 피해
+            int damage = (int) (Math.random() * 6 + 10);
+            // 실제 체력에서 차감
+            player.hp -= damage;
+            System.out.println(player.nickname + "은 개쳐맞았습니다.\n남은 체력: " + player.hp);
+        }
     }
 }
