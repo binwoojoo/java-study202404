@@ -25,7 +25,6 @@ public class MethodQuiz {
         remove("치킨");
         printFoods();
 
-
         boolean flag1 = include("파스타");
         System.out.println("flag1 = " + flag1);
 
