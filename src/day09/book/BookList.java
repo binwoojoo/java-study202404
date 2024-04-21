@@ -49,7 +49,6 @@ public class BookList {
         return bArr.length;
     }
 
-
     public Book[] getbArr() {
         return bArr;
     }
