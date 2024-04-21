@@ -16,7 +16,5 @@ public class D extends A {
     void test() {
         A a = new A();
 //        f1 = 22;
-
     }
-
 }
