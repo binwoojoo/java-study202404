@@ -8,7 +8,6 @@ public class MethodQuiz {
     static String[] foods = {"떡볶이", "치킨", "파스타"};
     static String[] userNames = {"홍길동", "고길동"};
 
-
     public static void main(String[] args) {
 
         printFoods();
