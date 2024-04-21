@@ -10,7 +10,6 @@ public class LibraryRepository {
     // 정적 초기화자 : static필드 초기값 설정
     static {
         bookList = new BookList();
-
         bookList.push(new CookBook("기적의 집밥책", "김해진", "청림라이프", true));
         bookList.push(new CartoonBook("떨어지면 끝장맨", "스에노부 케이코", "대원씨아이", 18));
         bookList.push(new CartoonBook("원펀맨", "One", "대원씨아이", 15));
