@@ -1,5 +1,7 @@
 package day09.book;
 
+import day08.protec.pac1.B;
+
 // 역할: 도서관리 앱에서 사용하는 데이터들을 관리하는 객체
 // 관리할 데이터: 우리 회원이 누구?  우리는 어떤책들을 갖고 있는가?
 public class LibraryRepository {
@@ -33,6 +35,10 @@ public class LibraryRepository {
         return bookList.getbArr();
     }
 
+    public Book[] getAllremoveBooksInfo() {
+        return bookList.getRemovebArr();
+    }
+
     /**
      * 주어진 책 번호에 맞는 책이 대여 가능한지에 대한 상태를 리턴
      *
@@ -41,7 +47,14 @@ public class LibraryRepository {
      */
     public RentStatus rentBook(String bookNum) {
         // 1. 책 번호에 해당하는 책 정보 가져오기
-        Book wishBook = bookList.get(Integer.parseInt(bookNum) - 1);
+        Book wishBook = null;
+        try {
+            wishBook = bookList.get(Integer.parseInt(bookNum) - 1);
+
+        } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력해주세어");
+
+        }
         System.out.println(wishBook.info());
         // 2. 이 책을 대여할 수 있는지 검증
         // 2-1. 요리책일 경우
@@ -50,8 +63,10 @@ public class LibraryRepository {
             if (((CookBook) wishBook).isCoupon()) {
                 // 회원의 쿠폰갯수를 업데이트
                 user.setCouponCount(user.getCouponCount() + 1);
+                bookList.remove(Integer.parseInt(bookNum) - 1);
                 return RentStatus.RENT_SUCCESS_WITH_COUPON;
             } else {
+                bookList.remove(Integer.parseInt(bookNum) - 1);
                 return RentStatus.RENT_SUCCESS;
             }
         }
@@ -59,6 +74,7 @@ public class LibraryRepository {
         else if (wishBook instanceof CartoonBook) {
             // 3. 회원의 연령이 만화책의 제한연령보다 높은지 확인
             if (user.getAge() >= ((CartoonBook) wishBook).getAccessAge()) {
+                bookList.remove(Integer.parseInt(bookNum) - 1);
                 return RentStatus.RENT_SUCCESS;
             } else {
                 return RentStatus.RENT_FAIL;

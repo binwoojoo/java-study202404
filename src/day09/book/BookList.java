@@ -4,11 +4,13 @@ package day09.book;
 public class BookList {
 
     private Book[] bArr;
+    private Book[] removeArr;
 
     private static final int NOT_FOUND = -1;
 
     public BookList() {
         this.bArr = new Book[0];
+        this.removeArr = new Book[0];
     }
 
     // 맨 끝에 추가
@@ -33,6 +35,16 @@ public class BookList {
         return lastBook;
     }
 
+    // removeArr에 책 추가
+    public void pushToRemove(Book bookToRemove) {
+        Book[] temp = new Book[this.removeArr.length + 1];
+        for (int i = 0; i < this.removeArr.length; i++) {
+            temp[i] = this.removeArr[i];
+        }
+        temp[temp.length - 1] = bookToRemove;
+        this.removeArr = temp;
+    }
+
     // 책 정보 삭제
     public Book remove(int index) {
         // 삭제 대상 백업
@@ -41,6 +53,7 @@ public class BookList {
             bArr[i] = bArr[i + 1];
         }
         pop();
+        pushToRemove(removedBook);
         return removedBook;
     }
 
@@ -51,6 +64,10 @@ public class BookList {
 
     public Book[] getbArr() {
         return bArr;
+    }
+
+    public Book[] getRemovebArr() {
+        return removeArr;
     }
 
     public Book get(int index) {

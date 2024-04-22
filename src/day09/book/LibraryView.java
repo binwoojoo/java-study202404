@@ -15,7 +15,15 @@ public class LibraryView {
     public void makeNewBookUser() {
         System.out.println("\n# 회원 정보를 입력해주세요.");
         String name = input("# 이름: ");
-        int age = Integer.parseInt(input("# 나이: "));
+        int age = 0;
+        while (true) {
+            try {
+                age = Integer.parseInt(input("# 나이: "));
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("숫자만 입력해주세요~^^");
+            }
+        }
         Gender gender = inputGender();
 
         // 입력된 데이터를 저장시켜야 함.
@@ -40,6 +48,7 @@ public class LibraryView {
         System.out.println("# 2. 도서 전체 조회");
         System.out.println("# 3. 도서 제목으로 검색");
         System.out.println("# 4. 도서 대여하기");
+        System.out.println("# 5. 도서 반납하기");
         System.out.println("# 9. 프로그램 종료하기");
     }
 
@@ -64,6 +73,9 @@ public class LibraryView {
                 case "4":
                     rentBook();
                     break;
+                case "5":
+                    refundBook();
+                    break;
                 case "9":
                     System.out.println("# 프로그램을 종료합니다!!");
                     return;
@@ -72,6 +84,7 @@ public class LibraryView {
             }
         }
     }
+
 
     // 회원 정보를 출력
     private void displayUser() {
@@ -93,6 +106,16 @@ public class LibraryView {
             System.out.printf("%d. %s\n", i + 1, book.info());
         }
 
+    }
+
+    private void refundBook() {
+        System.out.println("\n=============== 대여한 도서 목록 ================");
+        Book[] removeinformationList = repository.getAllremoveBooksInfo();
+        int removebookNum = Integer.parseInt(input("- 반납할 책의 번호: "));
+        for (int i = 0; i < removeinformationList.length; i++) {
+            Book book = removeinformationList[i];
+            System.out.printf("%d. %s\n", i + 1, book.info());
+        }
     }
 
     // 책을 입력한 검색어로 찾기
@@ -117,10 +140,15 @@ public class LibraryView {
         displayAllBooks();
         String bookNum = input("- 대여할 도서 번호 입력: ");
         // 저장소에다가 대여가능한지 여부 검증
-        RentStatus status = repository.rentBook(bookNum);
-
+        RentStatus status = null;
+        try {
+            status = repository.rentBook(bookNum);
+        } catch (NullPointerException e) {
+            return;
+        }
         if (status == RentStatus.RENT_SUCCESS_WITH_COUPON) {
             System.out.println("# 쿠폰과 함께 대여 성공");
+
         } else if (status == RentStatus.RENT_SUCCESS) {
             System.out.println("# 대여 성공");
         } else {
