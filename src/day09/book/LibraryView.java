@@ -111,10 +111,13 @@ public class LibraryView {
     private void refundBook() {
         System.out.println("\n=============== 대여한 도서 목록 ================");
         Book[] removeinformationList = repository.getAllremoveBooksInfo();
-        int removebookNum = Integer.parseInt(input("- 반납할 책의 번호: "));
         for (int i = 0; i < removeinformationList.length; i++) {
             Book book = removeinformationList[i];
             System.out.printf("%d. %s\n", i + 1, book.info());
+        }
+        String removeBookNum = input("- 반납할 책의 번호: ");
+        if (repository.repushToBooklist(removeBookNum) == RentStatus.RENT_SUCCESS) {
+            System.out.println("반납 성공");
         }
     }
 

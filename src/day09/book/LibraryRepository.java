@@ -1,7 +1,5 @@
 package day09.book;
 
-import day08.protec.pac1.B;
-
 // 역할: 도서관리 앱에서 사용하는 데이터들을 관리하는 객체
 // 관리할 데이터: 우리 회원이 누구?  우리는 어떤책들을 갖고 있는가?
 public class LibraryRepository {
@@ -81,5 +79,10 @@ public class LibraryRepository {
             }
         }
         return RentStatus.RENT_FAIL;
+    }
+
+    public RentStatus repushToBooklist(String bookNum) {
+        bookList.deleteRemoveListBook(Integer.parseInt(bookNum) - 1);
+        return RentStatus.RENT_SUCCESS;
     }
 }

@@ -45,6 +45,17 @@ public class BookList {
         this.removeArr = temp;
     }
 
+    // removeArr에서 반납할 책 제거 후 bArr에 push
+    public Book deleteRemoveListBook(int index) {
+        Book removeListBook = removeArr[index];
+        for (int i = index; i < removeArr.length - 1; i++) {
+            removeArr[i] = removeArr[i + 1];
+        }
+        removeListPop();
+        push(removeListBook);
+        return removeListBook;
+    }
+
     // 책 정보 삭제
     public Book remove(int index) {
         // 삭제 대상 백업
@@ -55,6 +66,17 @@ public class BookList {
         pop();
         pushToRemove(removedBook);
         return removedBook;
+    }
+
+    private Book removeListPop() {
+        // 맨 끝 책 백업
+        Book lastBook = removeArr[removeArr.length - 1];
+        Book[] temp = new Book[removeArr.length - 1];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = removeArr[i];
+        }
+        removeArr = temp;
+        return lastBook;
     }
 
     // 배열에 저장된 요소 수 리턴
