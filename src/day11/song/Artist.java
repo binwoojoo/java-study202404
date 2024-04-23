@@ -1,3 +1,4 @@
+
 package day11.song;
 
 import java.util.HashSet;
@@ -10,30 +11,31 @@ public class Artist {
     private Set<String> songList; // 노래목록
 
     // 생성자
-
     public Artist(String artistName) {
         this.artistName = artistName;
-        this.songList = new HashSet<>();
+        this.songList = new HashSet<>(); // 비어있는 set
     }
 
-    public String getArtistName() {
-        return artistName;
+    public boolean addSong(String songName) {
+        return this.songList.add(songName);
     }
 
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
+    // setter, getter
+
+    // ...
+
+
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "artistName='" + artistName + '\'' +
+                ", songList=" + songList +
+                '}';
     }
 
     public Set<String> getSongList() {
-        return songList;
-    }
-
-    public void setSongList(Set<String> songList) {
-        this.songList = songList;
-    }
-
-    public void addSong(String songName) {
-
+        return this.songList;
     }
 }
+
 
