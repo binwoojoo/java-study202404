@@ -29,6 +29,13 @@ public class Main {
         bananaBasket.setFruit(new Banana(22));
         Banana fruit1 = bananaBasket.getFruit();
 
+        Basket<Peach> peachBasket = new Basket<>();
+        peachBasket.setFruit(new Peach(1));
+        Peach fruit2 = peachBasket.getFruit();
+
+        System.out.println(fruit);
+        System.out.println(fruit1);
+        System.out.println(fruit2);
 
     }
 }
