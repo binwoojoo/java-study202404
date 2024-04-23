@@ -1,4 +1,4 @@
-package day11.api.lang;
+package day11.api;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
