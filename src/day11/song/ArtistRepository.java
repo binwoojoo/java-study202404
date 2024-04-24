@@ -1,6 +1,9 @@
 
 package day11.song;
 
+import day12.io.FileExample;
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -12,12 +15,16 @@ public class ArtistRepository {
     // key: 가수 이름, value: 가수 객체(가수명, 노래리스트)
     private Map<String, Artist> artistMap = new HashMap<>();
 
+    // 세이브 파일 경로
+    public static final String SAVE_PATH = FileExample.ROOT_PATH + "/hello/song.save";
+
     public int count() {
         return artistMap.size();
     }
 
     /**
      * 주어진 가수명이 artistMap에 저장되어 있는지 확인하는 메서드
+     *
      * @param artistName - 저장이 되었는지 확인할 가수의 이름
      * @return - map에 저장된 가수라면 true, 아니라면 false
      */
@@ -45,6 +52,7 @@ public class ArtistRepository {
     /**
      * 가수 이름으로 map에서 해당 가수 정보를 꺼내와서
      * 그 가수 정보 안에 있는 노래리스트를 반환
+     *
      * @param artistName
      * @return
      */
@@ -54,4 +62,32 @@ public class ArtistRepository {
         return foundArtist.getSongList();
     }
 
+    public void save() {
+
+        try (FileOutputStream fos = new FileOutputStream(SAVE_PATH)) {
+
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(artistMap);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void load() {
+
+        File file = new File(SAVE_PATH);
+        if (file.exists()) {
+            try (FileInputStream fis = new FileInputStream(SAVE_PATH)) {
+
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                this.artistMap = (Map<String, Artist>) ois.readObject();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 }
