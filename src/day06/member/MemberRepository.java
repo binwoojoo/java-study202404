@@ -1,5 +1,9 @@
 package day06.member;
 
+import day12.io.FileExample;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 // 역할: 회원 배열을 관리하는 역할 - 회원 데이터 저장소
@@ -37,6 +41,7 @@ public class MemberRepository {
 
     /**
      * 생성된 회원정보를 회원 배열에 끝에 추가하는 기능
+     *
      * @param newMember - 사용자의 입력으로 전달된 회원 정보 객체
      */
     void addNewMember(Member newMember) {
@@ -50,13 +55,25 @@ public class MemberRepository {
 //        members = temp;
 
         members.push(newMember);
+
+        // 회원 정보 텍스트파일에 저장하기
+        try (FileWriter fw = new FileWriter(FileExample.ROOT_PATH + "/hello/my_member.txt")) {
+
+            String newMemberInfo = String.format("%s,%s,%s,%s,%d\n",
+                    newMember.email, newMember.password,
+                    newMember.memberName, newMember.gender, newMember.age);
+            fw.write(newMemberInfo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 이메일 중복을 확인하는 기능
+     *
      * @param targetEmail - 검사할 사용자의 입력 이메일 값
      * @return - 이메일이 이미 존재한다면 true,
-     *           존재하지 않는 사용가능한 이메일이면 false
+     * 존재하지 않는 사용가능한 이메일이면 false
      * @author - 코딩킹
      * @since 2024.04.16
      */
@@ -66,9 +83,10 @@ public class MemberRepository {
 
     /**
      * 이메일을 통해 회원의 모든 정보(객체)를 가져오는 메서드
+     *
      * @param inputEmail - 사용자가 입력한 이메일값
      * @return - 해당 이메일을 통해 찾아낸 회원 객체,
-     *           만약 찾지 못하면 null을 리턴
+     * 만약 찾지 못하면 null을 리턴
      */
     public Member findMemberByEmail(String inputEmail) {
 //        for (Member m : members) {
