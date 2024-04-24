@@ -45,7 +45,7 @@ public class Mapping {
 //                .collect(Collectors.toList());
 
         List<simpleDish> simpleDishList = menuList.stream()
-                .map(simpleDish::new)
+                .map(dish -> new simpleDish(dish))
                 .collect(Collectors.toList());
         System.out.println("simpleDishList = " + simpleDishList);
 

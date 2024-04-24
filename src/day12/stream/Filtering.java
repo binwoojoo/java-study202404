@@ -1,5 +1,6 @@
 package day12.stream;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,9 +17,10 @@ public class Filtering {
                 .collect(toList());
         System.out.println(dishList);
 
-        dishList.forEach(dish -> {
-            System.out.println(dish.getName());
-        });
+        for (Dish dish1 : dishList) {
+            System.out.println(dish1.getName());
+        }
+
         System.out.println("=========================================");
 
         // 메뉴 목록중에 육류이면서 600칼로리 미만인 요리 필터링해서 출력
@@ -48,11 +50,15 @@ public class Filtering {
         System.out.println("=========================================");
 
         // 300칼로리보다 높은 요리 중 처음 2개는 제끼고 필터링
-        menuList
+        // 맨앞 2개 제외
+        List<String> xList = new ArrayList<>();
+        for (Dish x : menuList
                 .stream().filter(dish -> dish.getCalories() >= 300)
                 .skip(2) // 맨앞 2개 제외
-                .collect(toList())
-                .forEach(dish -> System.out.println(dish));
+                .collect(toList())) {
+            xList.add(String.valueOf(x));
+        }
+        System.out.println(xList);
 
         System.out.println("=========================================");
 
