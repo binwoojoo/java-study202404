@@ -1,6 +1,8 @@
 package day12.stream.quiz1;
 
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -134,29 +136,37 @@ public class Main {
                 {Trader: Alan in Cambridge, year: 2022, value: 950}
          */
         System.out.println("=======================================================");
-        Map<Integer, List<Transaction>> groupByYearMap = new HashMap<>();
+//        Map<Integer, List<Transaction>> groupByYearMap = new HashMap<>();
+//
+//        List<Transaction> trs2021 = transactions.stream()
+//                .filter(trs -> trs.getYear() == 2021)
+//                .collect(toList());
+//
+//        List<Transaction> trs2022 = transactions.stream()
+//                .filter(trs -> trs.getYear() == 2022)
+//                .collect(toList());
+//
+//        groupByYearMap.put(2021, trs2021);
+//        groupByYearMap.put(2022, trs2022);
+//
+//
+//        System.out.println("=====================");
+//        for (Integer year : groupByYearMap.keySet()) {
+//            System.out.println("year = " + year);
+//            for (Transaction transaction : groupByYearMap.get(year)) {
+//                System.out.println(transaction);
+//            }
+//        }
 
-        List<Transaction> trs2021 = transactions.stream()
-                .filter(trs -> trs.getYear() == 2021)
-                .collect(toList());
+        Map<Integer, List<Transaction>> cambridgeTrsMap = transactions.stream()
+                .filter(transaction -> transaction.getTrader().getCity().equals("Cambridge"))
+                // year를 key로 만들어서 그룹핑 함
+                .collect(Collectors.groupingBy(transaction -> transaction.getYear()));
 
-        List<Transaction> trs2022 = transactions.stream()
-                .filter(trs -> trs.getYear() == 2022)
-                .collect(toList());
-
-        groupByYearMap.put(2021, trs2021);
-        groupByYearMap.put(2022, trs2022);
-
-
-        System.out.println("=====================");
-        for (Integer year : groupByYearMap.keySet()) {
-            System.out.println("year = " + year);
-            for (Transaction transaction : groupByYearMap.get(year)) {
-                System.out.println(transaction);
-            }
-        }
-
-
+        cambridgeTrsMap.forEach((key, value) -> {
+            System.out.println("year = " + key);
+            value.forEach(System.out::println);
+        });
 
         // 연습 12. 모든 거래 중 가장 큰 거래액과 가장 작은 거래액의 차이를 계산하시오.
         // 출력 값 : 700
