@@ -5,7 +5,6 @@ public class Main {
 //
 //        ThrowsExample te = new ThrowsExample();
 //
-//
 ////        int n = te.inputNumber();
 ////        System.out.println("n = " + n);
 //
